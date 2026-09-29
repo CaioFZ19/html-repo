@@ -1,31 +1,50 @@
 <center>
-    <input type="text">
+    <input type="text" id="display">
+
+    <button onclick="display.value = ''">C</button>
     <br>
     <span>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>+</button>
+        <button onclick="addNumber(7)">7</button>
+        <button onclick="addNumber(8)">8</button>
+        <button onclick="addNumber(9)">9</button>
+        <button onclick="addNumber('+')">+</button>
     </span>
     <br>
     <span>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>-</button>
+        <button onclick="addNumber(4)">4</button>
+        <button onclick="addNumber(5)">5</button>
+        <button onclick="addNumber(6)">6</button>
+        <button onclick="addNumber('-')">-</button>
     </span>
     <br>
     <span>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>x</button>
+        <button onclick="addNumber(1)">1</button>
+        <button onclick="addNumber(2)">2</button>
+        <button onclick="addNumber(3)">3</button>
+        <button onclick="addNumber('*')">x</button>
     </span>
     <br>
     <span>
-        <button>,</button>
-        <button>0</button>
-        <button>/</button>
-        <button>=</button>
+        <button onclick="addNumber('.')">,</button>
+        <button onclick="addNumber(0)">0</button>
+        <button onclick="addNumber('/')">/</button>
+        <button id="calcular">=</button>
     </span>   
 </center>
+
+    <script>
+        function addNumber(button) {
+            display = document.getElementById('display')
+            display.value += button
+        } 
+
+        const calcular = document.getElementById('calcular')
+
+        calcular.addEventListener('click', () => {
+            display = document.getElementById('display')
+            conta = display.value
+            addNumber("=")
+            resultado = (eval(conta))
+            display.value = (conta + " = " + resultado)
+        })
+    </script>
